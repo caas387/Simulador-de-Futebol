@@ -1,0 +1,47 @@
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: "Segoe UI", sans-serif;
+}
+
+h2,
+h3 {
+    margin-top: 1.5rem;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+.btn {
+    text-transform: uppercase;
+}
+
+#timer {
+    font-size: 4rem;
+    letter-spacing: 0.05em;
+}
+
+#painelMensagens p {
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.gol {
+    animation: pulse 1s ease-in-out;
+    color: #ffc107;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        text-shadow: 0 0 2px #ffc107;
+    }
+
+    50% {
+        text-shadow: 0 0 8px #ffc107;
+    }
+}
