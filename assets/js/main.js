@@ -72,3 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+function jogarNovamente(timeA, timeB) {
+    window.location.reload(timeA, timeB)
+}
