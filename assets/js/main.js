@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const timeBSelect = document.getElementById("timeB");
     const btnIniciar = document.getElementById("iniciarJogo");
 
-    // Popular os times nos selects
+
     teams.forEach((team) => {
         const optionA = document.createElement("option");
         optionA.value = team.name;
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         timeBSelect.appendChild(optionB);
     });
 
-    // Clique no botão para iniciar o jogo
+
     btnIniciar.addEventListener("click", () => {
         const nomeA = timeASelect.value;
         const nomeB = timeBSelect.value;
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("pre-jogo").style.display = "none";
         document.getElementById("simulacaoJogo").style.display = "block";
 
-        // Iniciar o motor da partida (se já estiver implementado)
+        // Iniciar o motor da partida
         iniciarPartida(timeA, timeB, atualizarTimer, () => {
             mostrarMelhorJogador(timeA, timeB);
             document.getElementById("simulacaoJogo").style.display = "none";
