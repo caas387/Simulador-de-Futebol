@@ -6,18 +6,11 @@ let partidaPausada = false;
 function simularEvento(timeA, timeB, onEvento) {
     if (partidaPausada) return;
 
-    // Simula a chance de evento (simplificado)
-    const probEvento = 0.2; // 20% chance de evento a cada "tick"
+    const probEvento = 0.2;
     if (Math.random() < probEvento) {
-        // Decide qual time
         const time = Math.random() < 0.5 ? timeA : timeB;
-        // Escolhe jogador aleatório do time titular
-        const jogador =
-            time.starters[Math.floor(Math.random() * time.starters.length)];
-
-        // Gera mensagem do evento
+        const jogador = time.starters[Math.floor(Math.random() * time.starters.length)];
         const evento = gerarEventoAleatorio(time, jogador);
-
         onEvento(evento, time, jogador);
     }
 }
@@ -25,6 +18,7 @@ function simularEvento(timeA, timeB, onEvento) {
 function iniciarPartida(timeA, timeB, atualizarUI, finalizar) {
     minutoAtual = 0;
     partidaPausada = false;
+    adicionarMensagem("🔔 Início do Jogo!", true);
 
     intervaloPartida = setInterval(() => {
         if (partidaPausada) return;
@@ -33,10 +27,12 @@ function iniciarPartida(timeA, timeB, atualizarUI, finalizar) {
         atualizarUI(minutoAtual);
 
         simularEvento(timeA, timeB, (evento, time, jogador) => {
-            // Adiciona mensagem
-            adicionarMensagem(evento);
+            if (evento.includes("OVNI")) {
+                adicionarMensagem(evento, true);
+            } else {
+                adicionarMensagem(evento);
+            }
 
-            // Evento de gol simplificado (exemplo)
             if (evento.includes("⚽")) {
                 if (time === timeA) placarA++;
                 else placarB++;
@@ -44,7 +40,15 @@ function iniciarPartida(timeA, timeB, atualizarUI, finalizar) {
             }
         });
 
+        if (minutoAtual === 45 && !segundoTempo) {
+            adicionarMensagem("⏸ Intervalo de Jogo!", true);
+            pausarPartida();
+            document.getElementById("simulacaoJogo").style.display = "none";
+            document.getElementById("intervalo").style.display = "block";
+        }
+
         if (minutoAtual >= tempoTotal) {
+            adicionarMensagem("🏁 Fim do Jogo!", true);
             clearInterval(intervaloPartida);
             finalizar();
         }

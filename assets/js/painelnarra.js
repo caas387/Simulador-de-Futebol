@@ -8,7 +8,7 @@ const eventos = [
     { texto: "Cartão vermelho para", emoji: "🟥" },
     { texto: "Substituição: sai", emoji: "🔄" },
     { texto: "Chance clara de gol para", emoji: "🔥" },
-    { texto: "Bola na trave para", emoji: "� wood 🌟" },
+    { texto: "Bola na trave para", emoji: "🌟" },
     { texto: "Lançamento preciso de", emoji: "📢" },
     { texto: "Contra-ataque rápido de", emoji: "🏃‍♂️" },
     { texto: "Passe espetacular de", emoji: "🎯" },
@@ -21,19 +21,22 @@ const eventos = [
     { texto: "Jogo truncado entre", emoji: "⚔️" },
     { texto: "Drible desconcertante de", emoji: "💨" },
     { texto: "Gol contra de", emoji: "😵" },
+    { texto: "Um OVNI sobrevoa o estádio!", emoji: "🛸" }
 ];
 
-// Função para adicionar mensagem no painel
-function adicionarMensagem(texto) {
+function adicionarMensagem(texto, especial = false) {
     const p = document.createElement("p");
     p.classList.add("mb-0");
+    if (especial) p.classList.add("special");
     p.textContent = texto;
     painelMensagens.appendChild(p);
-    painelMensagens.scrollTop = painelMensagens.scrollHeight; // rolar para baixo
+    painelMensagens.scrollTop = painelMensagens.scrollHeight;
 }
 
-// Função para gerar evento aleatório com jogador e time
 function gerarEventoAleatorio(time, jogador) {
     const evento = eventos[Math.floor(Math.random() * eventos.length)];
+    if (evento.texto.includes("OVNI")) {
+        return `${evento.emoji} ${evento.texto}`;
+    }
     return `${evento.emoji} ${evento.texto} ${jogador.name} (${time.name})`;
 }
