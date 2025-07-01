@@ -88,20 +88,24 @@
                         <p class="mb-0">⚽ Aguardando início da partida...</p>
                     </div>
                 </div>
+
+                <button class="btn btn-danger mt-4" onclick="encerrarPartidaUsuario()">Encerrar Partida</button>
             </div>
 
             <!-- Intervalo -->
             <div id="intervalo" class="text-center mt-4" style="display:none;">
                 <h2>⏸ Intervalo</h2>
                 <p>Hora de respirar! Pronto para o segundo tempo?</p>
-                <button class="btn btn-primary" id="btnSegundoTempo" onclick="iniciarSegundoTempo()">Iniciar 2º Tempo</button>
+                <button class="btn btn-primary" id="btnSegundoTempo" onclick="iniciarSegundoTempo()">Iniciar 2º
+                    Tempo</button>
             </div>
 
             <!-- Fim de Jogo -->
             <div id="fimJogo" class="text-center mt-5" style="display:none;">
                 <h2>🏁 Fim de Jogo!</h2>
                 <p id="mensagemFinal">Obrigado por jogar!</p>
-                <button class="btn btn-outline-success mt-3" id="btnReiniciar" onclick="jogarNovamente()">Jogar Novamente</button>
+                <button class="btn btn-outline-success mt-3" id="btnReiniciar" onclick="jogarNovamente()">Jogar
+                    Novamente</button>
             </div>
 
         </section>
